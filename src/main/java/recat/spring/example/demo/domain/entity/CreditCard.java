@@ -20,5 +20,5 @@ public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double number;
+    private int number;
 }

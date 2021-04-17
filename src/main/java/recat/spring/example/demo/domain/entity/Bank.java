@@ -23,10 +23,4 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String companyName;
-    @OneToMany
-    private List<Address> addresses;
-    @ManyToMany
-    private List<User> clients;
-    @OneToMany
-    private List<CreditCard> creditCards;
 }

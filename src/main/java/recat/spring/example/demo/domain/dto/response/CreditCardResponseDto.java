@@ -1,4 +1,4 @@
-package recat.spring.example.demo.domain.dto;
+package recat.spring.example.demo.domain.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import recat.spring.example.demo.domain.entity.Bank;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreditCardDto {
+public class CreditCardResponseDto {
     private Long id;
-    private Double number;
+    private int number;
 }

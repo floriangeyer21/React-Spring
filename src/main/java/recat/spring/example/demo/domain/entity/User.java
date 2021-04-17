@@ -25,8 +25,7 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    @OneToMany
-    private List<Address> addresses;
-    @ManyToMany
-    private List<CreditCard> creditCards;
+    private String email;
+    private String password;
+    private String address;
 }
