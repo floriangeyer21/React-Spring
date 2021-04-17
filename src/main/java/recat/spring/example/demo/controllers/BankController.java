@@ -1,6 +1,5 @@
 package recat.spring.example.demo.controllers;
 
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import recat.spring.example.demo.domain.dto.BankDto;
+import recat.spring.example.demo.domain.dto.request.BankRequestDto;
+import recat.spring.example.demo.domain.dto.response.BankResponseDto;
 import recat.spring.example.demo.domain.entity.Bank;
 import recat.spring.example.demo.service.interfaces.BankService;
 import recat.spring.example.demo.service.mappers.BankMapper;
@@ -30,18 +30,18 @@ public class BankController {
     }
 
     @GetMapping("/{id}")
-    public BankDto getBankById(@PathVariable Long id) {
+    public BankResponseDto getBankById(@PathVariable Long id) {
         return bankMapper.mapBankToDto(bankService.getBankById(id));
     }
 
     @PostMapping
-    public BankDto saveBank(@RequestBody BankDto bankDto){
-        Bank bank = bankMapper.mapDtoToBank(bankDto);
+    public BankResponseDto saveBank(@RequestBody BankRequestDto bankRequestDto){
+        Bank bank = bankMapper.mapDtoToBank(bankRequestDto);
         return bankMapper.mapBankToDto(bankService.saveBank(bank));
     }
 
     @GetMapping
-    public List<BankDto> getAllBanks() {
+    public List<BankResponseDto> getAllBanks() {
         return bankService.getAllBanks().stream()
                 .map(bank -> bankMapper.mapBankToDto(bank))
                 .collect(Collectors.toList());

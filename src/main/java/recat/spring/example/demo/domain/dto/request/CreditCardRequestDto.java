@@ -1,4 +1,4 @@
-package recat.spring.example.demo.domain.dto;
+package recat.spring.example.demo.domain.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddressDto {
-    private Long id;
-    private String address;
+public class CreditCardRequestDto {
+    private int number;
 }

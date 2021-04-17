@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import recat.spring.example.demo.domain.dto.UserDto;
+import recat.spring.example.demo.domain.dto.request.UserRequestDto;
+import recat.spring.example.demo.domain.dto.response.UserResponseDto;
 import recat.spring.example.demo.domain.entity.User;
 import recat.spring.example.demo.service.impl.UserServiceImpl;
 import recat.spring.example.demo.service.mappers.UserMapper;
@@ -27,21 +28,15 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable Long id) {
-        return userMapper.mapUserToDto(userServiceImpl.getUserById(id));
-    }
-
-    @PostMapping
-    public UserDto createUser(@RequestBody UserDto userDto) {
-        User user = userMapper.mapDtoToUser(userDto);
-        return userMapper.mapUserToDto(userServiceImpl.saveUser(user));
+    public UserResponseDto getUserById(@PathVariable Long id) {
+        return userMapper.mapUserToResponseDto(userServiceImpl.getUserById(id));
     }
 
     @GetMapping
-    public List<UserDto> getAllUsers() {
+    public List<UserResponseDto> getAllUsers() {
         return userServiceImpl.getAllUsers()
                 .stream()
-                .map(user -> userMapper.mapUserToDto(user))
+                .map(user -> userMapper.mapUserToResponseDto(user))
                 .collect(Collectors.toList());
     }
 }
